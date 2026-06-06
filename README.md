@@ -1,11 +1,16 @@
 # MSc_Thesis
 CONTINUAL LEARNING FOR TIME SERIES CLASSIFICATION
 
-Abstract
+# Abstract:
+
 This thesis presents Continual learning methods applied in the field of time series data classification. Time series classification is an important machine learning task in many real-world areas, such as healthcare, finance, industrial monitoring, and environmental sensing. In these applications, data often arrive continuously, and their distribution can change over time. Traditional machine learning models are usually trained on fixed datasets, so they may not adapt well to new patterns without retraining.
+
 The main goal of my work was to design and implement a framework where time series datasets can be learned in sequential task settings and evaluated for catastrophic forgetting. First, I performed introductory experiments on Permuted MNIST and Split MNIST to demonstrate the forgetting problem in controlled benchmark scenarios. After this, I focused on time series classification using datasets from the aeon toolkit. In the implemented framework, I compared several continual learning strategies, including sequential fine-tuning, Elastic Weight Consolidation, Learning without Forgetting, and Replay based learning. I also developed two time series-oriented methods: Time-Series Feature Distillation and Time-Series Prototype Replay. The first method preserves hidden feature representations, while the second combines replay with prototype preservation in feature space. In addition, I implemented Soft Voting and Rank Weighted ensemble methods to combine the predictions of multiple continual learning models.
+
 I evaluated the framework on both univariate and multivariate time series datasets, using MLP and 1D CNN architectures. The results were analysed with final average accuracy, final forgetting, backward transfer, and repeated runs with different random seeds. The experiments show that the continual learning methods reduced forgetting in different ways. Among the individual methods, Time-Series Prototype Replay achieved the strongest overall performance, while the ensemble methods provided stable and combined predictions.
 
-Implemented Continual Learning Framework
+# Implemented Continual Learning Framework:
+
 In this chapter, I describe the implementation and experimental setup of my work. The experiments were implemented in Python and run in Google Colab. I used aeon to load the time series datasets, PyTorch to build the neural networks and continual learning methods, and scikit-learn, NumPy, Pandas, and Matplotlib for pre-processing, evaluation, result handling, and visualization. The code was first developed for a simpler univariate and binary classification setup, and later extended to support multivariate and multi class time series experiments.
+
 During the implementation, one important decision was to build my own time series continual learning framework instead of directly extending the GMvandeVen continual learning repository that I used earlier for the MNIST experiments. That repository was very useful for the introductory image based experiments and for understanding standard continual learning methods. However, I found it difficult to adapt its structure to my own time series experiments in a simple and reusable way. Since I wanted to build a framework where I could easily change datasets, task sequences, architectures, methods, and evaluation settings, I decided to implement a separate framework around aeon and PyTorch.
